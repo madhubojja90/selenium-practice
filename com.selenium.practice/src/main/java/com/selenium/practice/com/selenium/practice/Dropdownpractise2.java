@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class Dropdownpractise2 {
 
@@ -10,15 +11,15 @@ public class Dropdownpractise2 {
 		// TODO Auto-generated method stub	
 		
 		WebDriver driver=new ChromeDriver();
-		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
-		driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
-	    driver.findElement(By.xpath("//a[@value='BLR']")).click();
-	    Thread.sleep(2000);
-	    //driver.findElement(By.xpath("(//a[@value='MAA'])[2]")).click();
-	//input[@id='ctl00_mainContent_ddl_destinationStation1_CTXT'] //a[@vlaue='MAA']
+		driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+		driver.findElement(By.id("checkBoxOption1")).click();
+		Assert.assertTrue(driver.findElement(By.id("checkBoxOption1")).isSelected());
+		driver.findElement(By.id("checkBoxOption1")).click();
+		Assert.assertFalse(driver.findElement(By.id("checkBoxOption1")).isSelected());
+		//Locator-type="checkbox"
+		
+	  Assert.assertEquals(driver.findElements(By.cssSelector("input[type='checkbox']")).size(),3);
 	    
-	    driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']")).click();
-	    driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']")).click();
 	}
 
 }
