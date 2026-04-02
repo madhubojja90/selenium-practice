@@ -23,7 +23,7 @@ public class LoginPagePractiseWithWaits {
         driver.findElement(By.id("password")).sendKeys("Learning@830$3mK2");
         List<WebElement> radios = driver.findElements(By.name("radio"));
         driver.findElement(By.xpath("//input[@type=\"radio\" and @value=\"user\"]")).click();
-        WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
+        WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(30));
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("okayBtn")));
         WebElement okButton = wait.until(
         	    ExpectedConditions.elementToBeClickable(By.id("okayBtn"))
@@ -42,8 +42,17 @@ public class LoginPagePractiseWithWaits {
         driver.findElement(By.cssSelector("a[class=\"nav-link btn btn-primary\"]")).click();
         driver.findElement(By.cssSelector("button[class=\"btn btn-success\"]")).click();
         driver.findElement(By.id("country")).sendKeys("india");
-        WebElement country=wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[class=\"suggestions\"]")));
+        WebElement country=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='suggestions']//a[text()='India']")));
         country.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for=\"checkbox2\"]")));
+        WebElement checkbox = wait.until(
+        	    ExpectedConditions.elementToBeClickable(By.id("checkbox2"))
+        	);
+
+        	if (!checkbox.isSelected()) {
+        	    checkbox.click();
+        	}
+        driver.findElement(By.cssSelector("input[value=\"Purchase\"]")).click();
         	
         	
 	}
