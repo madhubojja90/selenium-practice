@@ -13,8 +13,11 @@ public class ScollpageExample {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
  WebDriver driver=new ChromeDriver();
  driver.get("https://rahulshettyacademy.com/AutomationPractice");
+ driver.manage().window().maximize();
+ driver.manage().deleteAllCookies();
  JavascriptExecutor js=(JavascriptExecutor)driver;
  js.executeScript("window.scroll(0,600)");
 //div[@class='tableFixHead']   //td[4]
@@ -30,7 +33,10 @@ public class ScollpageExample {
 int actual=Integer.parseInt(driver.findElement(By.cssSelector(".totalAmount")).getText().split(":")[1].trim());
  Assert.assertEquals(actual, sum);
  
- 
+ System.out.println(driver.findElement(By.cssSelector(".table-display tbody tr:nth-child(3)")).getText());
+ System.out.println(driver.findElements(By.cssSelector(".table-display tbody tr")).size()-1);
+ System.out.println(driver.findElements(By.cssSelector(".table-display tbody th")).size());
+
  
 	
 	}
